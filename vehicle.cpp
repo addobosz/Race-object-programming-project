@@ -1,4 +1,5 @@
 #include "vehicle.h"
+#include <iostream>
 
 Vehicle::Vehicle(int distance, int numberOfSeats, int avgSpeed, const std::string& name, int price)
     : mDistance(distance), mNumberOfSeats(numberOfSeats), mAvgSpeed(avgSpeed), mName(name), mPrice(price)
@@ -42,4 +43,13 @@ void Vehicle::setName(const std::string& name) {
 
 void Vehicle::setPrice(int price) {
     mPrice = price;
+}
+
+std::ostream& operator<<(std::ostream& os, const Vehicle& vehicle) {
+    os << "Name: " << vehicle.getName() << std::endl <<
+        "Distance: " << vehicle.getDistance() << std::endl <<
+        "Number of seats: " << vehicle.getNumberOfSeats() << std::endl <<
+        "Average speed: " << vehicle.getAvgSpeed() << std::endl <<
+        "Price: " << vehicle.getPrice() << std::endl;
+    return os;
 }

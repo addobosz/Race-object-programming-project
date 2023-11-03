@@ -1,6 +1,7 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
+#include <iostream>
 #include <string>
 
 class Vehicle {
@@ -20,6 +21,10 @@ public:
     void setAvgSpeed(int avgSpeed);
     void setName(const std::string& name);
     void setPrice(int price);
+
+    //toString()
+    friend std::ostream& operator<<(std::ostream& os, const Vehicle& vehicle); // friend is necessary because std::ostream is not a member of Vehicle class.
+    
 
 protected:
     int mDistance;

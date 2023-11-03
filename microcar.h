@@ -11,7 +11,8 @@ public:
 
     void setAgile(bool agile);
     
-
+    friend std::ostream& operator<<(std::ostream& os, const MicroCar& MicroCar);
+    
 protected:
     bool mAgile;
 };

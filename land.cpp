@@ -27,3 +27,11 @@ void Land::setTrunk(bool trunk) {
 void Land::setMaxSpeed(int maxSpeed) {
     mMaxSpeed = maxSpeed;
 }
+
+std::ostream& operator<<(std::ostream& os, const Land& land) {
+    os << static_cast<const Vehicle&>(land);
+    os << "Number of wheels: " << land.getNumOfWheels() << std::endl <<
+    "Trunk: " << land.getTrunk() << std::endl <<
+    "Max Speed: " << land.getMaxSpeed() << std::endl;
+    return os;
+}

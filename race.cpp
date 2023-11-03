@@ -13,6 +13,6 @@
 int main() {
     char name[] = "elton";
 
-    Plane brr = Plane(1,1,1,name,1,1,100);
-    std::cout << brr.getWingLength() << std::endl;
+    MicroCar brr = MicroCar(1,1,1,name,10, 1,1,1, true);
+    std::cout << brr;
 }

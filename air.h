@@ -11,6 +11,7 @@ public:
 
     void setNumOfEngines(int numOfEngines);
     
+    friend std::ostream& operator<<(std::ostream& os, const Air& air);
 
 protected:
     int mNumOfEngines;

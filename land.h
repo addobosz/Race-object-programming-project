@@ -15,6 +15,8 @@ public:
     void setTrunk(bool trunk);
     void setMaxSpeed(int maxSpeed);
 
+    friend std::ostream& operator<<(std::ostream& os, const Land& land);
+
 protected:
     int mNumOfWheels;
     bool mTrunk;

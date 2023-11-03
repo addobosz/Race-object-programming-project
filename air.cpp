@@ -12,3 +12,8 @@ void Air::setNumOfEngines(int numOfEngines) {
     mNumOfEngines = numOfEngines;
 }
 
+std::ostream& operator<<(std::ostream& os, const Air& air) {
+    os << static_cast<const Vehicle&>(air);
+    os << "Number of engines: " << air.getNumOfEngines() << std::endl;
+    return os;
+}

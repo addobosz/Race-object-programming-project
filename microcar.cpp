@@ -12,3 +12,8 @@ void MicroCar::setAgile(bool agile) {
     mAgile = agile;
 }
 
+std::ostream& operator<<(std::ostream& os, const MicroCar& microcar) {
+    os << static_cast<const Land&>(microcar);
+    os << "Agile: " << microcar.getAgile() << std::endl;
+    return os;
+}
