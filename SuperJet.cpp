@@ -12,3 +12,8 @@ void SuperJet::setTurbo(bool turbo) {
     mTurbo = turbo;
 }
 
+std::ostream& operator<<(std::ostream& os, const SuperJet& superjet) {
+    os << static_cast<const Air&>(superjet);
+    os << "Turbo: " << superjet.getTurbo() << std::endl;
+    return os;
+}

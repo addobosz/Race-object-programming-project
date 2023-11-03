@@ -11,3 +11,9 @@ std::string CityCar::getTypeOfEngine() const {
 void CityCar::setTypeOfEngine(const std::string& typeOfEngine) {
     mTypeOfEngine = typeOfEngine;
 }
+
+std::ostream& operator<<(std::ostream& os, const CityCar& citycar) {
+    os << static_cast<const Land&>(citycar);
+    os << "Type of engine: " << citycar.getTypeOfEngine() << std::endl;
+    return os;
+}

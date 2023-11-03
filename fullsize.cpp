@@ -11,3 +11,9 @@ int FullSize::getComfort() const {
 void FullSize::setComfort(int comfort) {
     mComfort = comfort;
 }
+
+std::ostream& operator<<(std::ostream& os, const FullSize& fullsize) {
+    os << static_cast<const Land&>(fullsize);
+    os << "Comfort: " << fullsize.getComfort() << std::endl;
+    return os;
+}

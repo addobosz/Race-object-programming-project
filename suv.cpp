@@ -11,3 +11,9 @@ int SUV::getDurability() const {
 void SUV::setDurability(int durability) {
     mDurability = durability;
 }
+
+std::ostream& operator<<(std::ostream& os, const SUV& suv) {
+    os << static_cast<const Land&>(suv);
+    os << "Durability: " << suv.getDurability() << std::endl;
+    return os;
+}

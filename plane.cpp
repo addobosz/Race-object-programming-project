@@ -12,3 +12,8 @@ void Plane::setWingLength(int wingLength) {
     mWingLength = wingLength;
 }
 
+std::ostream& operator<<(std::ostream& os, const Plane& plane) {
+    os << static_cast<const Air&>(plane);
+    os << "Wing length: " << plane.getWingLength() << std::endl;
+    return os;
+}

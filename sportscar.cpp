@@ -11,3 +11,9 @@ bool SportsCar::getAmgBoost() const {
 void SportsCar::setAmgBoost(bool amgBoost) {
     mAmgBoost = amgBoost;
 }
+
+std::ostream& operator<<(std::ostream& os, const SportsCar& sportscar) {
+    os << static_cast<const Land&>(sportscar);
+    os << "AMG Boost: " << sportscar.getAmgBoost() << std::endl;
+    return os;
+}
