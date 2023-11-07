@@ -11,6 +11,8 @@ public:
 
     void setDurability(int durability);
 
+    friend std::ostream& operator<<(std::ostream& os, const SUV& suv);
+
 protected:
     int mDurability;
 };

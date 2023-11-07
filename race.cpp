@@ -1,18 +1,18 @@
-#include <iostream>
+#include <vector>
+#include "race.h"
 #include "vehicle.h"
-#include "land.h"
-#include "air.h"
-#include "superjet.h"
-#include "plane.h"
-#include "microcar.h"
-#include "suv.h"
-#include "sportscar.h"
-#include "citycar.h"
-#include "fullsize.h"
 
-int main() {
-    char name[] = "elton";
+Race::Race(int numberOfPlayers, std::vector<Vehicle*> players)
+    : mNumOfPlayers(numberOfPlayers), mPlayers(players)
+{}
 
-    MicroCar brr = MicroCar(1,1,1,name,10, 1,1,1, true);
-    std::cout << brr;
+void Race::addPlayer(Vehicle* vehicle) {
+    mPlayers.push_back(vehicle);
+}
+
+std::ostream& operator<<(std::ostream& os, const Race& race) {
+    os << "Players:" << std::endl;
+    for (int i = 0; i < race.mPlayers.size(); i++) {
+        os << race.mPlayers[i]->getName() << std::endl;
+    }
 }

@@ -11,6 +11,7 @@ public:
 
     void setAmgBoost(bool amgBoost);
 
+    friend std::ostream& operator<<(std::ostream& os, const SportsCar& sportscar);
 protected:
     bool mAmgBoost;
 };

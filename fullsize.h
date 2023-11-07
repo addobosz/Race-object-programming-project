@@ -11,6 +11,8 @@ public:
 
     void setComfort(int comfort);
 
+    friend std::ostream& operator<<(std::ostream& os, const FullSize& fullsize);
+
 protected:
     int mComfort;
 };

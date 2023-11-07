@@ -12,6 +12,8 @@ public:
 
     void setTypeOfEngine(const std::string& typeOfEngine);
 
+    friend std::ostream& operator<<(std::ostream& os, const CityCar& citycar);
+
 protected:
     std::string mTypeOfEngine;
 };

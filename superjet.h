@@ -11,6 +11,7 @@ public:
 
     void setTurbo(bool turbo);
     
+    friend std::ostream& operator<<(std::ostream& os, const SuperJet& superjet);
 
 protected:
     bool mTurbo;

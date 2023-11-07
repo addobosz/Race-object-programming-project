@@ -11,6 +11,7 @@ public:
 
     void setWingLength(int wingLength);
     
+    friend std::ostream& operator<<(std::ostream& os, const Plane& plane);
 
 protected:
     int mWingLength;
