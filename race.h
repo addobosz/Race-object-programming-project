@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include "vehicle.h"
 
 class Race {
 public:

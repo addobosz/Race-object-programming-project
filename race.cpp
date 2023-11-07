@@ -2,8 +2,8 @@
 #include "race.h"
 #include "vehicle.h"
 
-Race::Race(int numberOfPlayers, std::vector<Vehicle*> players)
-    : mNumOfPlayers(numberOfPlayers), mPlayers(players)
+Race::Race(int numberOfPlayers)
+    : mNumOfPlayers(numberOfPlayers), mPlayers(mNumOfPlayers)
 {}
 
 void Race::addPlayer(Vehicle* vehicle) {
@@ -15,4 +15,5 @@ std::ostream& operator<<(std::ostream& os, const Race& race) {
     for (int i = 0; i < race.mPlayers.size(); i++) {
         os << race.mPlayers[i]->getName() << std::endl;
     }
+    os << race.mNumOfPlayers;
 }
