@@ -29,9 +29,8 @@ int main() {
     std::cout << brr;
     Vehicle* brr_reference = &brr;
     std::cout << race;
-    // race += brr_reference;
-    // std::cout << race;
-    // race -= brr_reference;
-    // std::cout << race;
-    race.~Race();
+    race += brr_reference;
+    std::cout << race;
+    race -= brr_reference;
+    std::cout << race;
 }

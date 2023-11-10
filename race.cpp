@@ -1,14 +1,34 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <stdlib.h>
 #include "race.h"
 #include "vehicle.h"
 
 Race::Race(int numberOfPlayers)
     : mNumOfPlayers(numberOfPlayers), mPlayers()
 {
+    std::string carNames[] = {
+    "Aurora", "Bolt", "Circuit", "Diablo", "Echo", "Falcon", "Glide", "Horizon", "Impulse", "Jolt",
+    "Komet", "Lynx", "Mystique", "Nebula", "Orbit", "Pulse", "Quantum", "Rift", "Sonic", "Titan",
+    "Umbra", "Vortex", "Warp", "Xenon", "Zephyr", "Alpha", "Blaze", "Crest", "Drift", "Edge",
+    "Flare", "Gusto", "Halo", "Ion", "Jet", "Kilo", "Laser", "Mach", "Nova", "Oasis",
+    "Phantom", "Quartz", "Racer", "Streak", "Tempest", "Vector", "Whirl", "Xero", "Yonder", "Zenith",
+    "Apex", "Beacon", "Cliff", "Dash", "Elan", "Frost", "Glacier", "Harbor", "Ivory", "Jade",
+    "Krypton", "Lotus", "Meteor", "Nitro", "Onyx", "Pinnacle", "Quake", "Ripple", "Storm", "Turbine",
+    "Utopia", "Vigil", "Wind", "Xcalibur", "Yellowstone", "Zion", "Azure", "Barrage", "Cascade", "Dune",
+    "Ember", "Flash", "Gale", "Heirloom", "Inferno", "Journey", "Kraken", "Legend", "Mirage", "Nomad",
+    "Olympus", "Phoenix", "Quest", "Rune", "Saber", "Trek", "Vanguard", "Wolf", "Xanadu", "Yacht",
+    "Zealot", "Arch", "Bound", "Chase", "Dart", "Evoke", "Forge", "Glimmer", "Hawk", "Infinity"
+    };
+
     for (int i = 0; i < mNumOfPlayers; i++) {
-        *this += new Vehicle(1,1,1,"elooo", 100);    // Add new players using overloaded += operator 
+        
+        int numberOfSeats = rand() % 8;
+        int avgSpeed = rand() % 200;
+        std::string name = carNames[rand() % (sizeof(carNames) / sizeof(std::string))];
+        int price = rand() % 1000000;
+        *this += new Vehicle(0, numberOfSeats, avgSpeed, name, price);    // Add new players using overloaded += operator 
     }
 }
 

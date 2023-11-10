@@ -10,6 +10,7 @@ class Race {
 public:
     Race(int numOfPlayers);
     ~Race();
+    
     //toString()
     friend std::ostream& operator<<(std::ostream& os, const Race& race); 
 
