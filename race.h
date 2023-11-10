@@ -3,17 +3,19 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "vehicle.h"
 
 class Race {
 public:
     Race(int numOfPlayers);
-
-    void addPlayer(Vehicle* vehicle);
-    
+    ~Race();
     //toString()
     friend std::ostream& operator<<(std::ostream& os, const Race& race); 
-    
+
+    //operators overloading
+    Race& operator+=(Vehicle* vehicle);
+    Race& operator-=(Vehicle* vehicle);
 
 protected:
     int mNumOfPlayers;

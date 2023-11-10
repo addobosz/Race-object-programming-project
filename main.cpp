@@ -27,12 +27,11 @@ int main() {
 
     MicroCar brr = MicroCar(1,1,1,name,10, 1,1,1, true);
     std::cout << brr;
-    Vehicle* brr_pointer = &brr;
-    // for (int i = 0; i < 5; i++) {
-
-    //     race.addPlayer(brr_pointer);
-    // }
+    Vehicle* brr_reference = &brr;
     std::cout << race;
-
-
+    // race += brr_reference;
+    // std::cout << race;
+    // race -= brr_reference;
+    // std::cout << race;
+    race.~Race();
 }

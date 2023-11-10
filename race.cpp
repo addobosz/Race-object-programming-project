@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "race.h"
 #include "vehicle.h"
 
@@ -11,6 +12,13 @@ Race::Race(int numberOfPlayers)
     }
 }
 
+Race::~Race() {
+    for (int i = 0; i < mPlayers.size(); i++) {
+        delete mPlayers[i];
+    }
+    mPlayers.clear();
+
+}
 
 // void Race::Run() {
     
@@ -21,14 +29,16 @@ Race& Race::operator+=(Vehicle* vehicle) {
     return *this; // Return the current instance to allow for chaining
 }
 
-// Race& Race::operator-=(Vehicle* vehicle) {
-    
-// }
+Race& Race::operator-=(Vehicle* vehicle) {
+    mPlayers.erase(std::remove(mPlayers.begin(), mPlayers.end(), vehicle), mPlayers.end());
+    return *this; // Return the current instance to allow for chaining
+}
 
 std::ostream& operator<<(std::ostream& os, const Race& race) {
     os << "Players:" << std::endl;
-    for (int i = 0; i < race.mNumOfPlayers; i++) {
+    for (int i = 0; i < race.mPlayers.size(); i++) {
         os << race.mPlayers[i]->getName() << std::endl;
     }
-    os << race.mNumOfPlayers << std::endl;
+    os << "Number of Players: " << race.mPlayers.size() << std::endl;
+    return os;
 }
