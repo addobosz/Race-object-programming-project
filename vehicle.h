@@ -27,6 +27,8 @@ public:
     
 
 protected:
+    virtual void startEngine() = 0;
+    virtual void stopEngine() = 0;
     int mDistance;
     int mNumberOfSeats;
     int mAvgSpeed;

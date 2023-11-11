@@ -12,6 +12,14 @@ void MicroCar::setAgile(bool agile) {
     mAgile = agile;
 }
 
+void MicroCar::startEngine() {
+    std::cout << "virtual";
+}
+
+void MicroCar::stopEngine() {
+    std::cout << "virtual";
+}
+
 std::ostream& operator<<(std::ostream& os, const MicroCar& microcar) {
     os << static_cast<const Land&>(microcar);
     os << "Agile: " << microcar.getAgile() << std::endl;

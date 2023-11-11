@@ -11,6 +11,10 @@ public:
 
     void setAmgBoost(bool amgBoost);
 
+    void startEngine() override;
+    void stopEngine() override;
+    void speedUp() override;
+
     friend std::ostream& operator<<(std::ostream& os, const SportsCar& sportscar);
 protected:
     bool mAmgBoost;

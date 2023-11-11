@@ -11,6 +11,10 @@ public:
 
     void setDurability(int durability);
 
+    void startEngine() override;
+    void stopEngine() override;
+    void speedUp() override;
+
     friend std::ostream& operator<<(std::ostream& os, const SUV& suv);
 
 protected:

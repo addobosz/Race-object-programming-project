@@ -15,6 +15,8 @@ public:
     void setTrunk(bool trunk);
     void setMaxSpeed(int maxSpeed);
 
+    virtual void speedUp() = 0;
+    
     friend std::ostream& operator<<(std::ostream& os, const Land& land);
 
 protected:

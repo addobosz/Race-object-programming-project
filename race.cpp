@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include "race.h"
 #include "vehicle.h"
+#include "citycar.h"
+#include "fullsize.h"
+#include "microcar.h"
+#include "plane.h"
+#include "sportscar.h"
+#include "superjet.h"
+#include "suv.h"
 
 Race::Race(int numberOfPlayers)
     : mNumOfPlayers(numberOfPlayers), mPlayers()
@@ -28,7 +35,43 @@ Race::Race(int numberOfPlayers)
         int avgSpeed = rand() % 200;
         std::string name = carNames[rand() % (sizeof(carNames) / sizeof(std::string))];
         int price = rand() % 1000000;
-        *this += new Vehicle(0, numberOfSeats, avgSpeed, name, price);    // Add new players using overloaded += operator 
+        int vehicleType = rand() % 7;
+        int numOfWheels = (1 + rand() % 3)*2;
+        bool trunk = rand() % 2;
+        int maxSpeed = avgSpeed * (3 + rand() % 4)/2; // at least 1.5x avgSpeed and at max 2.5x avgSpeed.
+        bool agile = rand() % 2;
+        int durability = 1 + rand() % 100;
+        bool amgBoost = rand() % 2;
+        int typeOfEngineInt = rand() % 3;
+        std::string typeOfEngine;
+        if (typeOfEngineInt == 0) {
+            typeOfEngine = "Diesel engine";
+        } else if (typeOfEngineInt == 1) {
+            typeOfEngine = "Petrol engine";
+        } else {
+            typeOfEngine = "Electric engine";
+        }
+        int comfort = 1 + rand() % 100;
+        int numOfEngines = 1 + rand() % 4;
+        bool turbo = rand() % 2;
+        int wingLength = 10 + rand() % 41;
+
+        // Add vehicle to the race depending on the vehicleType randomly chosen. Perform this operation using overloaded += operator.
+        if (vehicleType == 0) {
+        *this += new MicroCar(0, numberOfSeats, avgSpeed, name, price, numOfWheels, trunk, maxSpeed, agile);
+        } else if (vehicleType == 1) {
+            *this += new SUV(0, numberOfSeats, avgSpeed, name, price, numOfWheels, trunk, maxSpeed, durability);
+        } else if (vehicleType == 2) {
+            *this += new SportsCar(0, numberOfSeats, avgSpeed, name, price, numOfWheels, trunk, maxSpeed, amgBoost);
+        } else if (vehicleType == 3) {
+            *this += new CityCar(0, numberOfSeats, avgSpeed, name, price, numOfWheels, trunk, maxSpeed, typeOfEngine);
+        } else if (vehicleType == 4) {
+            *this += new FullSize(0, numberOfSeats, avgSpeed, name, price, numOfWheels, trunk, maxSpeed, comfort);
+        } else if (vehicleType == 5) {
+            *this += new SuperJet(0, numberOfSeats, avgSpeed, name, price, numOfEngines, turbo);
+        } else if (vehicleType == 6) {
+            *this += new Plane(0, numberOfSeats, avgSpeed, name, price, numOfEngines, wingLength);
+        }
     }
 }
 
@@ -40,9 +83,25 @@ Race::~Race() {
 
 }
 
-// void Race::Run() {
-    
-// }
+void Race::Run() {
+    int numOfTurns = 1 + rand() % 10;
+
+    for (int turn = 1; turn <= numOfTurns; turn++) {
+        std::cout << std::endl << "---- turn " << turn << " ----" << std::endl;
+        for (Vehicle* player : mPlayers) {
+            player->setDistance(player->getDistance() + player->getAvgSpeed());
+        }
+    } 
+
+    std::sort(mPlayers.begin(), mPlayers.end(), [](Vehicle* a, Vehicle* b) {
+        return a->getDistance() > b->getDistance();
+    });
+
+    std::cout << std::endl <<  "~~~~ The Race has finished! ~~~~" << std::endl;
+    for (Vehicle* player : mPlayers) {
+        std::cout << player->getName() << " - Distance: " << player->getDistance() << std::endl;
+    }
+}
 
 Race& Race::operator+=(Vehicle* vehicle) {
     mPlayers.push_back(vehicle); 

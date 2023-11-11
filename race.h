@@ -11,6 +11,7 @@ public:
     Race(int numOfPlayers);
     ~Race();
     
+    void Run();
     //toString()
     friend std::ostream& operator<<(std::ostream& os, const Race& race); 
 

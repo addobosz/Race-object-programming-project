@@ -12,6 +12,10 @@ public:
 
     void setTypeOfEngine(const std::string& typeOfEngine);
 
+    void startEngine() override;
+    void stopEngine() override;
+    void speedUp() override;
+
     friend std::ostream& operator<<(std::ostream& os, const CityCar& citycar);
 
 protected:

@@ -10,6 +10,10 @@ public:
     bool getTurbo() const;
 
     void setTurbo(bool turbo);
+
+    void startEngine() override;
+    void stopEngine() override;
+    void dive() override;
     
     friend std::ostream& operator<<(std::ostream& os, const SuperJet& superjet);
 

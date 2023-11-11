@@ -10,6 +10,10 @@ public:
     int getWingLength() const;
 
     void setWingLength(int wingLength);
+
+    void startEngine() override;
+    void stopEngine() override;
+    void dive() override;
     
     friend std::ostream& operator<<(std::ostream& os, const Plane& plane);
 

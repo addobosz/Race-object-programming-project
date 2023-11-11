@@ -11,6 +11,10 @@ public:
 
     void setComfort(int comfort);
 
+    void startEngine() override;
+    void stopEngine() override;
+    void speedUp() override;
+
     friend std::ostream& operator<<(std::ostream& os, const FullSize& fullsize);
 
 protected:

@@ -21,7 +21,6 @@ int welcome_message() {
 
 
 int main() {
-
     Race race = Race(welcome_message());
     char name[] = "elton";
 

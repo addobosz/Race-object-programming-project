@@ -10,6 +10,10 @@ public:
     bool getAgile() const;
 
     void setAgile(bool agile);
+
+    void startEngine() override;
+    void stopEngine() override;
+    void speedUp() override;
     
     friend std::ostream& operator<<(std::ostream& os, const MicroCar& MicroCar);
     
