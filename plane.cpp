@@ -21,7 +21,8 @@ void Plane::stopEngine() {
 }
 
 void Plane::dive() {
-    std::cout << "virtual";
+    std::cout << mName << " is attempting a dive!" << std::endl;
+    mDistance += 100;
 }
 
 std::ostream& operator<<(std::ostream& os, const Plane& plane) {

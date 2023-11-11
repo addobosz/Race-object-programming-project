@@ -84,17 +84,39 @@ Race::~Race() {
 }
 
 void Race::Run() {
-    int numOfTurns = 1 + rand() % 10;
+    int numOfTurns = 1 + rand() % 100;
+
+    // Start the engines
     for (Vehicle* player : mPlayers) {
         player->startEngine();
     }
+
     for (int turn = 1; turn <= numOfTurns; turn++) {
         std::cout << std::endl << "---- turn " << turn << " ----" << std::endl;
         for (Vehicle* player : mPlayers) {
             player->setDistance(player->getDistance() + player->getAvgSpeed());
-        }
-    } 
 
+            // Every turn, each player has 10% chance of using its unique ability.
+            int chance = rand() % 10;
+            if (chance == 0) {
+                // Below is the way of checking whether the vehicle is land or air. Depending on that, the special ability might be used. 
+                Land* landVehicle = dynamic_cast<Land*>(player);
+                if (landVehicle != nullptr) {
+                    landVehicle->speedUp();
+                }
+                Air* airVehicle = dynamic_cast<Air*>(player);
+                if (airVehicle != nullptr) {
+                    airVehicle->dive();
+                }
+            }
+        } 
+    }
+
+    // Stop the engines
+    for (Vehicle* player : mPlayers) {
+        player->stopEngine();
+    } 
+    
     std::sort(mPlayers.begin(), mPlayers.end(), [](Vehicle* a, Vehicle* b) {
         return a->getDistance() > b->getDistance();
     });
@@ -120,6 +142,6 @@ std::ostream& operator<<(std::ostream& os, const Race& race) {
     for (int i = 0; i < race.mPlayers.size(); i++) {
         os << race.mPlayers[i]->getName() << std::endl;
     }
-    os << "Number of Players: " << race.mPlayers.size() << std::endl;
+    os << "Number of Players: " << race.mPlayers.size() << std::endl << std::endl;
     return os;
 }

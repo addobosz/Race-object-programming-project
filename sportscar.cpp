@@ -21,7 +21,8 @@ void SportsCar::stopEngine() {
 }
 
 void SportsCar::speedUp() {
-    std::cout << "virtual";
+    std::cout << mName << " is speeding up!" << std::endl;
+    mAvgSpeed += 60;
 }
 
 std::ostream& operator<<(std::ostream& os, const SportsCar& sportscar) {

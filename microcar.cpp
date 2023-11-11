@@ -21,7 +21,8 @@ void MicroCar::stopEngine() {
 }
 
 void MicroCar::speedUp() {
-    std::cout << "virtual";
+    std::cout << mName << " is speeding up!" << std::endl;
+    mAvgSpeed += 40;
 }
 
 std::ostream& operator<<(std::ostream& os, const MicroCar& microcar) {
