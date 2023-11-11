@@ -12,6 +12,18 @@ void Plane::setWingLength(int wingLength) {
     mWingLength = wingLength;
 }
 
+void Plane::startEngine() {
+    std::cout << mName << "'s engine has just started!" << std::endl;
+}
+
+void Plane::stopEngine() {
+    std::cout << mName << "'s engine has just stopped!" << std::endl;
+}
+
+void Plane::dive() {
+    std::cout << "virtual";
+}
+
 std::ostream& operator<<(std::ostream& os, const Plane& plane) {
     os << static_cast<const Air&>(plane);
     os << "Wing length: " << plane.getWingLength() << std::endl;

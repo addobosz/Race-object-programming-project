@@ -85,7 +85,9 @@ Race::~Race() {
 
 void Race::Run() {
     int numOfTurns = 1 + rand() % 10;
-
+    for (Vehicle* player : mPlayers) {
+        player->startEngine();
+    }
     for (int turn = 1; turn <= numOfTurns; turn++) {
         std::cout << std::endl << "---- turn " << turn << " ----" << std::endl;
         for (Vehicle* player : mPlayers) {
@@ -98,8 +100,8 @@ void Race::Run() {
     });
 
     std::cout << std::endl <<  "~~~~ The Race has finished! ~~~~" << std::endl;
-    for (Vehicle* player : mPlayers) {
-        std::cout << player->getName() << " - Distance: " << player->getDistance() << std::endl;
+    for (int i = 0; i < mPlayers.size(); i++) {
+        std::cout << "#" << i+1 << " " << mPlayers[i]->getName() << " - Distance: " << mPlayers[i]->getDistance() << std::endl;
     }
 }
 

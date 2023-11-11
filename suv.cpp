@@ -12,6 +12,18 @@ void SUV::setDurability(int durability) {
     mDurability = durability;
 }
 
+void SUV::startEngine() {
+    std::cout << mName << "'s engine has just started!" << std::endl;
+}
+
+void SUV::stopEngine() {
+    std::cout << mName << "'s engine has just stopped!" << std::endl;
+}
+
+void SUV::speedUp() {
+    std::cout << "virtual";
+}
+
 std::ostream& operator<<(std::ostream& os, const SUV& suv) {
     os << static_cast<const Land&>(suv);
     os << "Durability: " << suv.getDurability() << std::endl;

@@ -32,4 +32,6 @@ int main() {
     std::cout << race;
     race -= brr_reference;
     std::cout << race;
+
+    race.Run();
 }

@@ -13,10 +13,14 @@ void MicroCar::setAgile(bool agile) {
 }
 
 void MicroCar::startEngine() {
-    std::cout << "virtual";
+    std::cout << mName << "'s engine has just started!" << std::endl;
 }
 
 void MicroCar::stopEngine() {
+    std::cout << mName << "'s engine has just stopped!" << std::endl;
+}
+
+void MicroCar::speedUp() {
     std::cout << "virtual";
 }
 

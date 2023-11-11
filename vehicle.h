@@ -25,10 +25,10 @@ public:
     //toString()
     friend std::ostream& operator<<(std::ostream& os, const Vehicle& vehicle); // friend is necessary because std::ostream is not a member of Vehicle class.
     
-
-protected:
     virtual void startEngine() = 0;
     virtual void stopEngine() = 0;
+
+protected:
     int mDistance;
     int mNumberOfSeats;
     int mAvgSpeed;

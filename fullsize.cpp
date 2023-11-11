@@ -12,6 +12,18 @@ void FullSize::setComfort(int comfort) {
     mComfort = comfort;
 }
 
+void FullSize::startEngine() {
+    std::cout << mName << "'s engine has just started!" << std::endl;
+}
+
+void FullSize::stopEngine() {
+    std::cout << mName << "'s engine has just stopped!" << std::endl;
+}
+
+void FullSize::speedUp() {
+    std::cout << "virtual";
+}
+
 std::ostream& operator<<(std::ostream& os, const FullSize& fullsize) {
     os << static_cast<const Land&>(fullsize);
     os << "Comfort: " << fullsize.getComfort() << std::endl;
