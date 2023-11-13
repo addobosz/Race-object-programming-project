@@ -6,6 +6,7 @@
 #include <algorithm>
 #include "vehicle.h"
 
+template <class T>
 class Race {
 public:
     Race(int numOfPlayers);
@@ -13,14 +14,17 @@ public:
     
     void Run();
     //toString()
-    friend std::ostream& operator<<(std::ostream& os, const Race& race); 
+    template <class U> 
+    friend std::ostream& operator<<(std::ostream& os, const Race<U>& race); 
 
     //operators overloading
-    Race& operator+=(Vehicle* vehicle);
-    Race& operator-=(Vehicle* vehicle);
+    Race& operator+=(T* vehicle);
+    Race& operator-=(T* vehicle);
 
 protected:
     int mNumOfPlayers;
-    std::vector<Vehicle*> mPlayers;
+    std::vector<T*> mPlayers;
 };
+
+#include "race.tpp"
 #endif 

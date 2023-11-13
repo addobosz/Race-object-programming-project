@@ -18,8 +18,10 @@ int main() {
     std::cout << "Enter the number of players:" << std::endl;
     std::cin >> num_of_players;
 
-    Race race = Race(num_of_players);
+    Race<Vehicle> race(num_of_players);
     std::cout << race;
 
     race.Run();
+
+    return 0;
 }
